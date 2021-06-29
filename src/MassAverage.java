@@ -1,10 +1,13 @@
 public class MassAverage {
+    //Probably don't edit these
     static int size = 1;
     static double averagePrimos = 0;
     static double averageCost = 0;
     static double averageRolls = 0;
     static int bestRolls = 9999999;
     static int worstRolls = 0;
+
+    //These you can edit
     static final int timesToRun = 1000000;
     static final int constellation = 6;
     static final int refinement = 5;
