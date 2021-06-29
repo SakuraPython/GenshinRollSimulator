@@ -1,5 +1,6 @@
 public class MassAverage {
     //Probably don't edit these
+    //They get initialized below anyway
     static int size = 1;
     static double averagePrimos = 0;
     static double averageCost = 0;
