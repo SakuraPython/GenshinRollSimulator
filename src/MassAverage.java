@@ -8,7 +8,8 @@ public class MassAverage {
     static int worstRolls = 0;
 
     //These you can edit
-    static final int timesToRun = 1000000;
+    //Hopefully I don't need to explain them
+    static final int timesToRun = 1000000; //Shouldn't be less than 30
     static final int constellation = 6;
     static final int refinement = 5;
 
