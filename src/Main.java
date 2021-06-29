@@ -7,19 +7,19 @@ public class Main {
         simulator.RollOldSystem();
         System.out.println("OLD SYSTEM");
         System.out.println(simulator.generateStats());
-        simulator.reset();
+        simulator.reset(6,5 );
         //simulator.setConstellation(X);
         //simulator.setStartingRoll(Y);
         //simulator.setStartingFifty(false); //This is irrelevant in the new system, but if it makes you happy
         simulator.RollNewSystem();
         System.out.println("NEW SYSTEM");
         System.out.println(simulator.generateStats());
-        simulator.reset();
+        simulator.reset(6, 5);
         //simulator.setRefinementLevel(Z); //Z = I want R[Z] of ONE of the banner features
         //simulator.setStartingFifty(false); //Weapons are 75/25, but they do respect the "50/50" rule
         simulator.RollWeaponSystem();
         System.out.println("WEAPON SYSTEM");
         System.out.println(simulator.generateWeaponStats());
-        simulator.reset();
+        simulator.reset(6, 5);
     }
 }

@@ -143,21 +143,25 @@ public class RollSim {
     /**
      * If you plan to use and edit this sim on your own, remember to reset the simulator between attempts.
      */
-    public void reset() {
-        pityCount = 0;
-        rollCount = 0;
-        bannerFeatures = 0;
-        standardChars = 0;
-        failedRolls = 0;
-        lastRollNotBannerFeature = false;
-        fiftiesWon = 0;
-        fiftiesLost = 0;
-        constellation = 6;
-        unPity = 0;
-        pityHit = 0;
-        weaponFeatures = 0;
-        otherWeapons = 0;
-        refinement = 5;
+    public void reset(int constellation, int refinement) {
+        this.pityCount = 0;
+        this.rollCount = 0;
+        this.bannerFeatures = 0;
+        this.standardChars = 0;
+        this.failedRolls = 0;
+        this.lastRollNotBannerFeature = false;
+        this.fiftiesWon = 0;
+        this.fiftiesLost = 0;
+        this.constellation = constellation;
+        this.unPity = 0;
+        this.pityHit = 0;
+        this.weaponFeatures = 0;
+        this.otherWeapons = 0;
+        this.refinement = refinement;
+    }
+
+    public int getRolls() {
+        return this.rollCount;
     }
 
     /**
