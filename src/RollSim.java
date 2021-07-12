@@ -362,7 +362,7 @@ public class RollSim {
             lastRollNotBannerFeature = true;
         }
         pityCount = 0;
-        fatePoints++; //the system is said to accumulate fate points regardless of whether or not you got the other banner feature or just some other weapon
+        //fatePoints++; //whoops, not actually. It needs to be a banner feature after all.
     }
 
 }
