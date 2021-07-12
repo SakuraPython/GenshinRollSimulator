@@ -18,8 +18,11 @@ public class Main {
         //simulator.setRefinementLevel(Z); //Z = I want R[Z] of ONE of the banner features
         //simulator.setStartingFifty(false); //Weapons are 75/25, but they do respect the "50/50" rule
         simulator.RollWeaponSystem();
-        System.out.println("WEAPON SYSTEM");
+        System.out.println("OLD WEAPON SYSTEM");
         System.out.println(simulator.generateWeaponStats());
         simulator.reset(6, 5);
+        simulator.RollWeaponSystemNew();
+        System.out.println("NEW WEAPON SYSTEM");
+        System.out.println(simulator.generateWeaponStats());
     }
 }

@@ -27,6 +27,7 @@ public class RollSim {
     private int weaponFeatures = 0; //specific weapon on the banner
     private int otherWeapons = 0; //any other weapon, including the other banner feature
     private int refinement = 5; //5 for whales, 1 for f2p/goldfish
+    private int fatePoints = 0;
 
     public RollSim() {
         //just set the values yourself using the set methods
@@ -158,6 +159,7 @@ public class RollSim {
         this.weaponFeatures = 0;
         this.otherWeapons = 0;
         this.refinement = refinement;
+        this.fatePoints = 0;
     }
 
     public int getRolls() {
@@ -229,6 +231,28 @@ public class RollSim {
                 }
             }
         } while (weaponFeatures < refinement); //characters can be C0, weapons are always at least R1
+    }
+
+    /**
+     * Now that there's been an update to a new five star weapon system, I don't feel so dumb for implementing the old one.
+     */
+    public void RollWeaponSystemNew() {
+        do {
+            pityCount++;
+            rollCount++;
+            if (pityCount == 80) {
+                RollFiveStarWeaponNew();
+                pityHit++;
+            } else {
+                int rand = rng.nextInt(1000);
+                if (rand < 7) {
+                    RollFiveStarWeaponNew();
+                    unPity++;
+                } else {
+                    failedRolls++;
+                }
+            }
+        } while (weaponFeatures < refinement);
     }
 
     /**
@@ -311,6 +335,34 @@ public class RollSim {
             lastRollNotBannerFeature = true;
         }
         pityCount = 0;
+    }
+
+    public void RollFiveStarWeaponNew() {
+        int firstRand = rng.nextInt(100);
+        if (fatePoints >= 2) { //if we accumulated enough fate points, it guarantees our desired weapon
+            weaponFeatures++;
+            fatePoints = 0;
+            pityCount = 0;
+            return;
+        }
+        if (firstRand < 75 || lastRollNotBannerFeature) {
+            boolean secondRand = rng.nextBoolean();
+            if (secondRand) {
+                weaponFeatures++;
+                fatePoints = 0;
+            }
+            else {
+                otherWeapons++;
+                fatePoints++;
+            }
+            lastRollNotBannerFeature = false; //again, both of these are banner features regardless
+        }
+        else {
+            otherWeapons++;
+            lastRollNotBannerFeature = true;
+        }
+        pityCount = 0;
+        fatePoints++; //the system is said to accumulate fate points regardless of whether or not you got the other banner feature or just some other weapon
     }
 
 }

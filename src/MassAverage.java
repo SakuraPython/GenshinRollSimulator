@@ -34,28 +34,18 @@ public class MassAverage {
             i = run(simulator, i);
         } while (i < timesToRun);
         System.out.println("OLD SYSTEM");
-        System.out.println("You rolled an average of " + averageRolls + " times.");
-        System.out.println("The average primos it took was " + averagePrimos + " and this would cost $" + averageCost + " for the old system.");
-        System.out.println("Best rolls: " + bestRolls + " (= " + bestRolls * 160 + " primos or $" + (bestRolls * 160) / 80.8 + ')');
-        System.out.println("Worst rolls: " + worstRolls + " (= " + worstRolls * 160 + " primos or $" + (worstRolls * 160) / 80.8 + ')');
-        size = 1;
-        simulator.reset(constellation, refinement);
+        i = getStats(simulator);
+        System.out.println();
         simulator.RollNewSystem();
         averagePrimos = simulator.calculatePrimos();
         averageCost = simulator.calculateRealDollars();
-        i = 0;
         do {
             simulator.RollNewSystem();
             i = run(simulator, i);
         } while (i < timesToRun);
         System.out.println("NEW SYSTEM");
-        System.out.println("You rolled an average of " + averageRolls + " times.");
-        System.out.println("The average primos it took was " + averagePrimos + " and this would cost $" + averageCost + " for the new system.");
-        System.out.println("Best rolls: " + bestRolls + " (= " + bestRolls * 160 + " primos or $" + (bestRolls * 160) / 80.8 + ')');
-        System.out.println("Worst rolls: " + worstRolls + " (= " + worstRolls * 160 + " primos or $" + (worstRolls * 160) / 80.8 + ')');
-        simulator.reset(constellation, refinement);
-        i = 0;
-        size = 1;
+        i = getStats(simulator);
+        System.out.println();
         simulator.RollWeaponSystem();
         averagePrimos = simulator.calculatePrimos();
         averageCost = simulator.calculateRealDollars();
@@ -63,11 +53,30 @@ public class MassAverage {
             simulator.RollWeaponSystem();
             i = run(simulator, i);
         } while (i < timesToRun);
-        System.out.println("WEAPON SYSTEM");
+        System.out.println("OLD WEAPON SYSTEM");
+        i = getStats(simulator);
+        System.out.println();
+        simulator.RollWeaponSystemNew();
+        averagePrimos = simulator.calculatePrimos();
+        averageCost = simulator.calculateRealDollars();
+        do {
+            simulator.RollWeaponSystemNew();
+            i = run(simulator, i);
+        } while (i < timesToRun);
+        System.out.println("NEW WEAPON SYSTEM");
+        getStats(simulator);
+    }
+
+    private static int getStats(RollSim simulator) {
+        int i;
         System.out.println("You rolled an average of " + averageRolls + " times.");
-        System.out.println("The average primos it took was " + averagePrimos + " and this would cost $" + averageCost + " for the weapon system.");
+        System.out.println("The average primos it took was " + averagePrimos + " and this would cost $" + averageCost);
         System.out.println("Best rolls: " + bestRolls + " (= " + bestRolls * 160 + " primos or $" + (bestRolls * 160) / 80.8 + ')');
         System.out.println("Worst rolls: " + worstRolls + " (= " + worstRolls * 160 + " primos or $" + (worstRolls * 160) / 80.8 + ')');
+        simulator.reset(constellation, refinement);
+        i = 0;
+        size = 1;
+        return i;
     }
 
     private static int run(RollSim simulator, int i) {
