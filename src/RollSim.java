@@ -343,6 +343,7 @@ public class RollSim {
             weaponFeatures++;
             fatePoints = 0;
             pityCount = 0;
+            lastRollNotBannerFeature = false;
             return;
         }
         if (firstRand < 75 || lastRollNotBannerFeature) {
