@@ -175,11 +175,13 @@ public class RollSim {
             pityCount++;
             rollCount++;
             if (pityCount == 90) { //if we hit pity
+                Globals.statLogger.logRollAt(pityCount - 1);
                 RollFiveStarOld();
                 pityHit++;
             } else {
                 int rand = rng.nextInt(1000); //[0, 999]
                 if (rand < 6) { //we lucked out
+                    Globals.statLogger.logRollAt(pityCount - 1);
                     RollFiveStarOld();
                     unPity++;
                 } else {
@@ -197,11 +199,13 @@ public class RollSim {
             pityCount++;
             rollCount++;
             if (pityCount == 90) {
+                Globals.statLogger.logRollAt(pityCount - 1);
                 RollFiveStarNew();
                 pityHit++;
             } else {
                 int rand = rng.nextInt(1000);
                 if (rand < 6) {
+                    Globals.statLogger.logRollAt(pityCount - 1);
                     RollFiveStarNew();
                     unPity++;
                 } else {
@@ -219,11 +223,13 @@ public class RollSim {
             pityCount++;
             rollCount++;
             if (pityCount == 80) { //weapons hit pity at 80 rolls instead of 90
+                Globals.statLogger.logRollAt(pityCount - 1);
                 RollFiveStarWeapon();
                 pityHit++;
             } else {
                 int rand = rng.nextInt(1000);
                 if (rand < 7) { //5 star weapons have base 0.7% drop rate instead of 0.6%
+                    Globals.statLogger.logRollAt(pityCount - 1);
                     RollFiveStarWeapon();
                     unPity++;
                 } else {
@@ -241,11 +247,13 @@ public class RollSim {
             pityCount++;
             rollCount++;
             if (pityCount == 80) {
+                Globals.statLogger.logRollAt(pityCount - 1);
                 RollFiveStarWeaponNew();
                 pityHit++;
             } else {
                 int rand = rng.nextInt(1000);
                 if (rand < 7) {
+                    Globals.statLogger.logRollAt(pityCount - 1);
                     RollFiveStarWeaponNew();
                     unPity++;
                 } else {

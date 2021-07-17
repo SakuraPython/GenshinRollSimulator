@@ -1,3 +1,6 @@
+/**
+ * I heard you like mass averages, so I gave you some.
+ */
 public class MassAverage {
     //Probably don't edit these
     //They get initialized below anyway
@@ -35,6 +38,7 @@ public class MassAverage {
         } while (i < timesToRun);
         System.out.println("OLD SYSTEM");
         i = getStats(simulator);
+        //showWayTooDetailedStats();
         System.out.println();
         simulator.RollNewSystem();
         averagePrimos = simulator.calculatePrimos();
@@ -45,6 +49,7 @@ public class MassAverage {
         } while (i < timesToRun);
         System.out.println("NEW SYSTEM");
         i = getStats(simulator);
+        //showWayTooDetailedStats();
         System.out.println();
         simulator.RollWeaponSystem();
         averagePrimos = simulator.calculatePrimos();
@@ -55,6 +60,7 @@ public class MassAverage {
         } while (i < timesToRun);
         System.out.println("OLD WEAPON SYSTEM");
         i = getStats(simulator);
+        //showWayTooDetailedStats();
         System.out.println();
         simulator.RollWeaponSystemNew();
         averagePrimos = simulator.calculatePrimos();
@@ -65,6 +71,8 @@ public class MassAverage {
         } while (i < timesToRun);
         System.out.println("NEW WEAPON SYSTEM");
         getStats(simulator);
+        //showWayTooDetailedStats();
+        System.out.println();
     }
 
     private static int getStats(RollSim simulator) {
@@ -90,8 +98,23 @@ public class MassAverage {
         if (simulator.getRolls() > worstRolls) {
             worstRolls = simulator.getRolls();
         }
+        Globals.statLogger.logMoneyAt(simulator.calculateRealDollars());
         simulator.reset(constellation, refinement);
         i++;
         return i;
+    }
+
+    private static void showWayTooDetailedStats() {
+        System.out.println("Stats for nerds:");
+        System.out.println("Raw data of where each 5 star roll occurred:");
+        Globals.statLogger.showRollDist();
+        System.out.println("As a distribution:");
+        Globals.statLogger.showRollDistAsPercent();
+        System.out.println("Raw cost data, range is about index * 100:");
+        Globals.statLogger.showCostDist();
+        System.out.println("As a distribution: ");
+        Globals.statLogger.showCostDistAsPercent();
+        Globals.statLogger.reset();
+        System.out.println();
     }
 }
