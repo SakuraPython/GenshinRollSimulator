@@ -362,7 +362,7 @@ public class RollSim {
             }
             else {
                 otherWeapons++;
-                fatePoints++;
+                //fatePoints++; //after the live patch hit, it seems my original implementation was the correct
             }
             lastRollNotBannerFeature = false; //again, both of these are banner features regardless
         }
@@ -371,7 +371,7 @@ public class RollSim {
             lastRollNotBannerFeature = true;
         }
         pityCount = 0;
-        //fatePoints++; //whoops, not actually. It needs to be a banner feature after all.
+        fatePoints++;
     }
 
 }
