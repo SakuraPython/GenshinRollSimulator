@@ -39,6 +39,8 @@ public class MassAverage {
         System.out.println("OLD SYSTEM");
         i = getStats(simulator);
         //showWayTooDetailedStats();
+        bestRolls = 9999999;
+        worstRolls = 0;
         System.out.println();
         simulator.RollNewSystem();
         averagePrimos = simulator.calculatePrimos();
@@ -50,6 +52,8 @@ public class MassAverage {
         System.out.println("NEW SYSTEM");
         i = getStats(simulator);
         //showWayTooDetailedStats();
+        bestRolls = 9999999;
+        worstRolls = 0;
         System.out.println();
         simulator.RollWeaponSystem();
         averagePrimos = simulator.calculatePrimos();
@@ -61,6 +65,8 @@ public class MassAverage {
         System.out.println("OLD WEAPON SYSTEM");
         i = getStats(simulator);
         //showWayTooDetailedStats();
+        bestRolls = 9999999;
+        worstRolls = 0;
         System.out.println();
         simulator.RollWeaponSystemNew();
         averagePrimos = simulator.calculatePrimos();
@@ -72,6 +78,8 @@ public class MassAverage {
         System.out.println("NEW WEAPON SYSTEM");
         getStats(simulator);
         //showWayTooDetailedStats();
+        bestRolls = 9999999;
+        worstRolls = 0;
         System.out.println();
     }
 
